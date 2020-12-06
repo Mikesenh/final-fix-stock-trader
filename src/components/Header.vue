@@ -51,35 +51,35 @@
 
 <script>
 //ToDo: Import mapActions from vuex
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
   data () {
     return {
       //ToDo: Create data object called isDropdownOpen and set it to false
-      isDropdownOpen : false
-    }
+      isDropdownOpen: false
+    };
   },
   computed: {
     //ToDo: Create a computed function called funds
     //ToDo: Have funds() return this.$store.getters.funds
      funds() {
-      return this.$store.getters.funds
+      return this.$store.getters.funds;
     }
   },
   methods: {
     //ToDo: Create ...mapActions method
     //ToDo: Call randomizeStocks: 'randomizeStocks'
     //ToDo: Call fetchData: 'loadData'
-    ...mapActions([
-      'randomizeStocks',
-      'loadData'
-    ]),
+    ...mapActions({
+      randomizeStocks: "randomizeStocks",
+      fetchData: "loadData"
+    }),
 
     //ToDo: Create endDay method
     //ToDo: Call randomizeStocks()
-    endDay (){
-      randomizeStocks();
+    endDay () {
+      this.randomizeStocks();
     },
 
     //ToDo: Create SaveData method
@@ -88,21 +88,21 @@ export default {
     //ToDo: Set stockPortfolio: to the $store getters stockPortfolio
     //ToDo: Set stocks: to the $store getters stocks
     //ToDo: Outside the data object use $http, using .put pass 'data.json' and the data object
-    SaveData (){
+    saveData () {
       const data = {
-      funds : this.$store.getters.funds,
-      stockPortfolio : this.$store.getters.stockPortfolio,
-      stocks : this.$store.getters.stocks
-      }
-      this.$http.put('/data.json', this.data)
+      funds: this.$store.getters.funds,
+      stockPortfolio: this.$store.getters.stockPortfolio,
+      stocks: this.$store.getters.stocks
+      };
+      this.$http.put("data.json", data);
     },
 
 
     //ToDo: Create loadData method
     //ToDo: Call fetchData()
-    loadData (){
-      fetchData();
+    loadData () {
+      this.fetchData();
     }
   }
-}
+};
 </script>

@@ -48,23 +48,39 @@ export default {
   data () {
     return {
       //ToDo: Create data object called quantity and set it to 0
+      quantity: 0
     }
   },
   computed: {
     //ToDo: Create a computed function called funds
+    funds: function() {
     //ToDo: Have funds() return $store.getters.funds
-
+      return $store.getters.funds
+    },
     //ToDo: Create a computed function called insufficientFunds
-    //ToDo: Have insufficientFunds() return this.quantity * this.stock.price > this.funds
+    insufficientFunds: function() {
+      //ToDo: Have insufficientFunds() return this.quantity * this.stock.price > this.funds
+      return this.quantity * this.stock.price > this.funds
+    }
+    
   },
   methods: {
     //ToDo: Create buyStock method
-    //ToDo: Create const called order that holds an object
+    buyStock: function() {
+      //ToDo: Create const called order that holds an object
+      const order = {
     //ToDo: Set stockId: to this.stock.id
+      stockId: this.stock.id,
     //ToDo: Set stockPrice: to this.stock.price
+      stockPrice: this.stock.price,
     //ToDo: Set quantity: to this.quantity
+      quantity: this.quantity
     //ToDo: Outside the data object $store.dispatch() passing 'buyStock' and order
     //ToDo: Reset quantity to 0
+      }
+      $store.dispatch(buyStock, order)
+      this.quantity = 0
+    }
   }
 }
 </script>

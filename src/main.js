@@ -23,7 +23,7 @@ Vue.http.options.root = 'https://stock-trader-f37d4-default-rtdb.firebaseio.com/
 //ToDo: Set Equal to your Firebase Database URL
 
   Vue.filter('currency', (value) => {
-    return $value.toLocaleString();
+    return "$" + value.toLocaleString();
     //ToDo: Return value.toLocaleString(), Add '$' sign before value
   })
 
@@ -36,7 +36,7 @@ const router = new VueRouter({
 
 new Vue({
   //ToDo: Pass the router constant to vue application
-  routes,
+  router,
   //ToDo: Pass store constant to vue application
   store,
   render: h => h(App),

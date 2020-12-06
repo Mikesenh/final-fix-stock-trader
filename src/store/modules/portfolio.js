@@ -57,25 +57,33 @@ const actions = {
 //ToDo: Create const called getters that is a data object{}
 const getters = {
 //ToDo: Inside getters object create stockPortfolio method that takes two parameters (state, getters)
-stockPortfolio: (state, getters) => {
+stockPortfolio (state, getters) {
   //1.ToDo: return state.stocks.map() that is a pointer function that passes stock
-  return state.stocks.map()
+  return state.stocks.map(stock => {
   //2.ToDo: Create const called record that is equal to getters.stocks.find(element => element.id == stock.id)
-  const record = getters.stocks.find(element => element.id == stock.id)
+  const record = getters.stocks.find(element => element.id == stock.id);
     //3.ToDo: Return an object
       //ToDo: Set id to stock.id
       //ToDo: Set quantity to stock.quantity
       //ToDo: Set name to record.name
       //ToDo: Set price to record.price
-  return {id: stock.id, quantity: stock.quantity, name: record.name, prince: record.price}
-},
-
+      return {
+        id: stock.id,
+        quantity: stock.quantity,
+        name: record.name,
+        price: record.price
+        }
+      });
+    },
+    //ToDo: Create funds method that passes state
+    //ToDo: Return state.funds
+    funds (state) {
+      return state.funds;
+      }
+    };
 //ToDo: Create funds method that passes state
   //ToDo: Return state.funds
-funds: (state) => {
-    return state.funds
-  }
-}
+
 
 
 export default {
