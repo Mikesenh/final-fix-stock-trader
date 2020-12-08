@@ -18,15 +18,17 @@
             type="number"
             class="form-control"
             placeholder="Quantity"
-            :class = 'insufficientFunds'
+            :class="{danger: insufficientFunds}"
+
           >
         </div>
         <div class="pull-right">
           <!--ToDo: Inside the button add a click event that calls buyStock-->
           <!--ToDo: Bind to disabled using : and set it equal to insufficientFunds || quantity is less than or equal to 0 || !Number.isInteger(quantity)-->
-          <button @click="buyStock" class="btn btn-success" :disabled = "insufficientFunds || quantity >= 0 || !Number.isInteger(quantity)">
+          <button @click="buyStock" class="btn btn-success" :disabled = "insufficientFunds || quantity <= 0">
             <!--ToDo: Display insufficientFunds data object and add if using ? 'Not Enough' else 'Buy'-->
             <!-- condition ? exprIfTrue : exprIfFalse -->
+            {{ insufficientFunds ? 'Insufficient Funds' : 'Buy' }}
             <!--insufficientFunds ? 'Not Enough' : 'Buy'-->
           </button>
         </div>
@@ -44,7 +46,7 @@
 <script>
 export default {
   //ToDo: Set props equal to stock using array syntax
-
+  props: ["stock"],
   data () {
     return {
       //ToDo: Create data object called quantity and set it to 0
@@ -55,7 +57,7 @@ export default {
     //ToDo: Create a computed function called funds
     funds: function() {
     //ToDo: Have funds() return $store.getters.funds
-      return $store.getters.funds
+      return this.$store.getters.funds
     },
     //ToDo: Create a computed function called insufficientFunds
     insufficientFunds: function() {
@@ -78,7 +80,7 @@ export default {
     //ToDo: Outside the data object $store.dispatch() passing 'buyStock' and order
     //ToDo: Reset quantity to 0
       }
-      $store.dispatch(buyStock, order)
+      this.$store.dispatch('buyStock', order)
       this.quantity = 0
     }
   }

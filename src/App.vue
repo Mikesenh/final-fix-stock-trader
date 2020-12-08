@@ -21,7 +21,8 @@ export default {
   //ToDo: Initialize Header component and name it appHeader
   components: {
     appHeader: Header
-  }
+  },
+  created () { this.$store.dispatch("initStocks") }
   //ToDo: On page creation dispatch 'initStocks' to the vuex $store (?)
 }
 </script>

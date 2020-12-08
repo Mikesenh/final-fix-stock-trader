@@ -18,9 +18,10 @@ const mutations = {
     if (record){
       record.quantity += quantity
     } else {
-      state.funds -= stockPrice * quantity
-    }
-  },
+      state.stocks.push({id: stockId,quantity: quantity});
+  }
+  state.funds -= stockPrice * quantity;
+},
   //ToDo: Inside mutations object create a vuex method called 'SELL_STOCK' that takes four parameters (state, {stockId, quantity, stockPrice}
   SELL_STOCK: (state, {stockId, quantity, stockPrice}) => {
     //ToDo: Create const called record that is equal to state.stocks.find(element => element.id == stockId)
@@ -81,8 +82,7 @@ stockPortfolio (state, getters) {
       return state.funds;
       }
     };
-//ToDo: Create funds method that passes state
-  //ToDo: Return state.funds
+
 
 
 

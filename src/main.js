@@ -10,7 +10,7 @@ import App from './App.vue'
 //ToDo: Import routes.js and use the {} passing routes
 import { routes } from './routes'
 //ToDo: Import store/store.js and name it store
-import { store } from './store/store.js'
+import store from './store/store.js'
 
 Vue.config.productionTip = false
 

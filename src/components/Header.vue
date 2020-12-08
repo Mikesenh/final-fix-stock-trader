@@ -9,25 +9,24 @@
         <ul class="nav navbar-nav">
           <!--ToDo: Create router-link that goes to '/portfolio' -->
                         <!--ToDo: set activeClass to "active", add tag attribute set to li, and add Portfolio text-->
-          <router-link to="/portfolio" tag="li" active-class="active">Portfolio</router-link>
+          <router-link to="/portfolio" tag="li" active-class="active"><a>Portfolio</a></router-link>
           <!--ToDo: Create router-link that goes to '/stocks' -->
                        <!--ToDo: set activeClass to "active", add tag attribute set to li, and add Stocks text-->
-          <router-link to="/stocks" tag="li" active-class="active">Stocks</router-link>
+          <router-link to="/stocks" tag="li" active-class="active"><a>Stocks</a></router-link>
         </ul>
         <strong class="navbar-text navbar-right">Funds:
           <!--ToDo: Call funds computed function and pipe the currency filter that is created in main.js (???) -->
-          {{ funds.currency( funds ) }}
+          {{ funds|currency }}
         </strong>
         <ul class="nav navbar-nav navbar-right">
           <li>
             <!--ToDo: Add click event to <a> that calls endDay method-->
             <a href="#" @click="endDay" >End Day</a>
           </li>
-            <a href="" :class="{ open: isDropdownOpen }" @click="isDropdownOpen = !isDropdownOpen" ></a>
           <!--ToDo: Inside <li> Bind to class using :class that passes an object {} called open and set it to isDropdownOpen-->
           <!--ToDo: Add click event that toggles isDropdownOpen to true and false-->
 
-          <li class="dropdown">
+          <li class="dropdown" :class="{open: isDropdownOpen}" @click="isDropdownOpen = !isDropdownOpen">
             <a
               href="#"
               class="dropdown-toggle"

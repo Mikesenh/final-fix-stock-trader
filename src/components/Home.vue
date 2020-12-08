@@ -7,7 +7,7 @@
 
     <p>Your Funds:
       <!--ToDo: Call funds computed function and pipe the currency filter that is created in main.js-->
-      {{ funds.currency }}
+      {{ funds|currency }}
     </p>
   </div>
 </template>
